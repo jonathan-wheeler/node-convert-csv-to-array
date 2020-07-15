@@ -15,6 +15,3 @@ package-lock.json
 
 # IDE / Editors
 .idea/
-
-# babel transformed
-lib
