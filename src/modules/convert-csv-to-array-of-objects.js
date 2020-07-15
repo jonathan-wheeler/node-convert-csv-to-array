@@ -4,6 +4,7 @@ export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
   const csv = data;
   const rows = csv.split(/(?!\B"[^"]*)\n(?![^"]*"\B)/g);
   const array = [];
+  const separatorRegex = new RegExp(`(?!\\B"[^"]*)${separator}(?![^"]*"${separator})`, 'g');
 
   let headerRow;
   let headerObj;
@@ -11,7 +12,7 @@ export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
 
   rows.forEach((row, idx) => {
     if (idx === 0) {
-      headerRow = row.split(separator);
+      headerRow = row.split(separatorRegex);
       if (header) {
         array.push(headerRow);
       }
@@ -21,7 +22,7 @@ export const convertCSVToArrayOfObjects = (data, { header, separator }) => {
         });
       });
     } else if (rows.length - 1 !== idx) {
-      const values = row.split(separator);
+      const values = row.split(separatorRegex);
 
       values.forEach((value, i) => {
         const convertedToNumber = convertStringToNumber(value);
