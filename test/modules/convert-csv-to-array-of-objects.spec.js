@@ -11,6 +11,7 @@ import {
   expectedResultObjectWithoutHeader,
   expectedResultObjectMultiline,
   expectedResultSeperatorInQuotedField,
+  expectedResultSeperatorInQuotedFieldWithUnquoted,
 } from '../fixtures/expected-results';
 
 test('convertCSVToArrayOfObjects | with header and semicolon separated', () => {
@@ -47,4 +48,16 @@ test('convertCSVToArrayOfObjects | separator in quoted values', () => {
   const result = convertCSVToArrayOfObjects(dataHeaderCommaSeparatedQuotedFields, { header: false, separator: ',' });
 
   expect(result).toEqual(expectedResultSeperatorInQuotedField);
+});
+
+test('convertCSVToArrayOfObjects | separator in quoted values with quoted flag', () => {
+  const result = convertCSVToArrayOfObjects(dataHeaderCommaSeparatedQuotedFields, { header: false, separator: ',', unquote: true });
+
+  expect(result).toEqual(expectedResultSeperatorInQuotedFieldWithUnquoted);
+});
+
+test('convertCSVToArrayOfObjects | unquoted values with quoted flag', () => {
+  const result = convertCSVToArrayOfObjects(dataHeaderSemicolonSeparated, { header: false, separator: ';', unquote: true });
+
+  expect(result).toEqual(expectedResultObjectWithoutHeader);
 });

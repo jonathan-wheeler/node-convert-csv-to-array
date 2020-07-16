@@ -78,6 +78,27 @@ const quotedFieldObjectContent = [
   },
 ];
 
+const unquotedContent = [
+  {
+    number: 1,
+    first: 'Mark',
+    last: 'Otto',
+    handle: '@mdo',
+  },
+  {
+    number: 2,
+    first: 'Jacob',
+    last: 'Thornton',
+    handle: '@fat',
+  },
+  {
+    number: 3,
+    first: 'Larry',
+    last: 'the, Bird',
+    handle: '@twitter',
+  },
+];
+
 export const expectedResultArrayHeader = [
   arrayHeader,
   ...arrayContent,
@@ -97,3 +118,5 @@ export const expectedResultArrayMultiline = arrayContentMultiline;
 export const expectedResultObjectMultiline = objectContentMultiline;
 
 export const expectedResultSeperatorInQuotedField = quotedFieldObjectContent;
+
+export const expectedResultSeperatorInQuotedFieldWithUnquoted = unquotedContent;
